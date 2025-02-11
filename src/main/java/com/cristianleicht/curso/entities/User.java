@@ -3,13 +3,23 @@ package com.cristianleicht.curso.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private String name;
 	private String email;
 	private String phone;
@@ -19,7 +29,7 @@ public class User implements Serializable{
 		
 	}
 	
-	public User(Integer id, String name, String email, String phone, String password) {
+	public User(Long id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,11 +38,11 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
