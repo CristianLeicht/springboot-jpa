@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+<<<<<<< HEAD
 import com.cristianleicht.curso.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+=======
+import jakarta.persistence.Id;
+>>>>>>> parent of 821d950 (Order, Instant, ISO 8601 Pt. 2)
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -24,8 +27,12 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+<<<<<<< HEAD
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+=======
+	
+>>>>>>> parent of 821d950 (Order, Instant, ISO 8601 Pt. 2)
 	private Instant momento;
 
 	@ManyToOne
