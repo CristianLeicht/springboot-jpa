@@ -2,17 +2,20 @@ package com.cristianleicht.curso.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.cristianleicht.curso.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Id;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,7 +29,7 @@ public class Order implements Serializable {
 	private Long id;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant momento;
+	private Instant moment;
 
 	@ManyToOne
 	@JoinColumn(name = "client_id")
@@ -38,11 +41,11 @@ public class Order implements Serializable {
 
 	}
 
-	public Order(Long id, Instant momento, OrderStatus orderStatus, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 		super();
 		this.id = id;
 		setOrderStatus(orderStatus);
-		this.momento = momento;
+		this.moment = moment;
 		this.client = client;
 	}
 
@@ -54,12 +57,12 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
-	public Instant getMomento() {
-		return momento;
+	public Instant getmoment() {
+		return moment;
 	}
 
-	public void setMomento(Instant momento) {
-		this.momento = momento;
+	public void setmoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public User getClient() {
@@ -69,7 +72,7 @@ public class Order implements Serializable {
 	public void setClient(User client) {
 		this.client = client;
 	}
-
+	
 	public OrderStatus getOrderStatus() {
 		return OrderStatus.valueOf(orderStatus);
 	}
