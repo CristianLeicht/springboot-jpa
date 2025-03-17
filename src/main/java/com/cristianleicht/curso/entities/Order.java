@@ -35,6 +35,9 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
+	
 	private Integer orderStatus;
 
 	public Order() {
@@ -81,6 +84,10 @@ public class Order implements Serializable {
 		if (orderStatus != null) {
 			this.orderStatus = orderStatus.getCode();
 		}
+	}
+	
+	public Set<OrderItem> getItems() {
+		return items;
 	}
 
 	@Override
